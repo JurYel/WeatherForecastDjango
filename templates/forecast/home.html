@@ -4,6 +4,50 @@
     <title>Weather Forecast</title>
 {% endblock page %}
 {% block content %}
-    <br>
-    <h2>Weather App Something</h2>
+<div class="content_wrapper" id="app">
+	<div v-if="infos.city">
+		<h1>
+			Weather Forecast
+			<div class="date"></div>
+		</h1>
+
+        <form class="" method="GET">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control mb-2" id="search_city" 
+                    placeholder="Enter City" name="city">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="material-icons" data-toggle="tooltip" title="Search">search</i>
+                    </button>
+                </span>
+            </div>
+        </form>
+
+		<div class="weather_card">
+			<div class="weather_card_img" style="background-image: url('https://our1930sfixerupper.com/wp-content/uploads/2019/10/New-York.jpg');">
+				<div class="weather_card_state">
+					<span class="material-icons">
+						<img src="http://openweathermap.org/img/wn/{{data.icon}}.png" alt="">
+					</span>
+				</div>
+			</div>
+
+			<div class="weather_card_infos">
+				<div class="weather_card_infos_title">
+					<p class="city-title">{{ data.city }}</p>
+                    <p class="text-warning"><small>{{data.description}}</small></p>
+				</div>
+				<div class="weather_card_infos_temp">
+					{{ data.celsius_temperature }} °C / {{ data.fahrenheit_temperature }} °F
+				</div>
+				<div class="bottom">
+					<hr>
+					<div class="weather_card_infos_bottom">
+						humidity: {{data.humidity}} - pressure: {{data.pressure}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock content %}
